@@ -10,46 +10,79 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
 
-
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
-inquirer.prompt([{
+inquirer
+  .prompt([
     //manager questions
-}]).then(response => {
+    {
+      type: 'input',
+      message: 'What is your name?',
+      name: 'name'
+    },
+    {
+        type: 'input',
+        message: 'Enter your Employee ID',
+        name: 'employeeId'
+    },
+    {
+        type: 'input',
+        message: 'Enter your email address',
+        name: 'email'
+    },
+    {
+        type: 'input',
+        messgae: 'Enter your office number',
+        name: 'officeNumber'
+    }
+  ])
+  .then((response) => {
     // populate manager info
     // promptForNexEmployee ()
-})
+  });
 
 const promptForNextEmployee = () => {
-    inquirer.prompt([{
+  inquirer
+    .prompt([
+      {
         // choice of 3
-    }]).then(response => {
-        // if engineer
-        //    promptForEngineer
-        // else if intern
-        //    promptForIntern
-        // else
-        //    use the functionality from page-template to generate the team
-    })
-}
+      },
+    ])
+    .then((response) => {
+      // if engineer
+      //    promptForEngineer
+      // else if intern
+      //    promptForIntern
+      // else
+      //    use the functionality from page-template to generate the team
+    });
+};
 
 const promptForEngineer = () => {
-    inquirer.prompt([{
+  inquirer
+    .prompt([
+      {
         //engineer questions
-    }]).then(response => {
-        // add new engineer to employees array
-        // promptForNextEmployee
-    })
-}
+      },
+    ])
+    .then((response) => {
+      // add new engineer to employees array
+      // promptForNextEmployee
+    });
+};
 
 const promptForIntern = () => {
-    inquirer.prompt([{
+  inquirer
+    .prompt([
+      {
         //intern questions
-    }]).then(response => {
-        // add new intern to employees array
-        // promptForNextEmployee
-    })
-}
+      },
+    ])
+    .then((response) => {
+      // add new intern to employees array
+      // promptForNextEmployee
+    });
+};
 
 const buildPage = () => {
-// render(myArrayOfTeamMembers)
-}
+  // render(myArrayOfTeamMembers)
+};
