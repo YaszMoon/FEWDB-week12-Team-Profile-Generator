@@ -15,25 +15,25 @@ inquirer
   .prompt([
     //manager questions
     {
-      type: 'input',
-      message: 'What is your name?',
-      name: 'name'
+      type: "input",
+      name: "name",
+      message: "What is your name?",
     },
     {
-        type: 'input',
-        message: 'Enter your Employee ID',
-        name: 'employeeId'
+      type: "input",
+      name: "employeeId",
+      message: "Enter your Employee ID",
     },
     {
-        type: 'input',
-        message: 'Enter your email address',
-        name: 'email'
+      type: "input",
+      name: "email",
+      message: "Enter your email address",
     },
     {
-        type: 'input',
-        messgae: 'Enter your office number',
-        name: 'officeNumber'
-    }
+      type: "input",
+      name: "officeNumber",
+      messgae: "Enter your office number",
+    },
   ])
   .then((response) => {
     // populate manager info
@@ -44,7 +44,10 @@ const promptForNextEmployee = () => {
   inquirer
     .prompt([
       {
-        // choice of 3
+        type: "list",
+        name: 'nextEmployee',
+        message: 'Which type of employee would you like to add next?',
+        choices: ['Engineer', 'Intern', 'No more employees to add']
       },
     ])
     .then((response) => {
