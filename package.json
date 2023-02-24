@@ -1,0 +1,26 @@
+{
+  "name": "team_profile_generator",
+  "version": "1.0.0",
+  "description": "Node application that generates an html page for team profiles.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YaszMoon/FEWDB-week12-Team-Profile-Generator.git"
+  },
+  "author": "Leanne Y. Knight",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YaszMoon/FEWDB-week12-Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/YaszMoon/FEWDB-week12-Team-Profile-Generator#readme",
+  "dependencies": {
+    "inquirer": "^6.5.0",
+    "jest": "^29.4.3"
+  }
+}
