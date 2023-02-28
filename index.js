@@ -10,29 +10,35 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
 
+const nameQ = {
+  type: "input",
+  name: "name",
+  message: "What is your name?"
+}
+
+const idQ = {
+  type: "input",
+  name: "employeeId",
+  message: "Enter your Employee ID"
+}
+
+const emailQ = {
+  type: "input",
+  name: "email",
+  message: "Enter your email address"
+}
+
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 inquirer
   .prompt([
     //manager questions
-    {
-      type: "input",
-      name: "name",
-      message: "What is your name?",
-    },
-    {
-      type: "input",
-      name: "employeeId",
-      message: "Enter your Employee ID",
-    },
-    {
-      type: "input",
-      name: "email",
-      message: "Enter your email address",
-    },
+    nameQ,
+    idQ,
+    emailQ,
     {
       type: "input",
       name: "officeNumber",
-      messgae: "Enter your office number",
+      messgae: "Enter your office number"
     },
   ])
   .then((response) => {
