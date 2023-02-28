@@ -52,10 +52,16 @@ const promptForNextEmployee = () => {
         name: "nextEmployee",
         message: "Which type of employee would you like to add next?",
         choices: ["Engineer", "Intern", "No more employees to add"],
-      }
+      },
     ])
     .then((response) => {
-      // if engineer
+      if (response.nextEmployee == "Engineer") {
+        promptForEngineer();
+      } else if (response.nextEmployee == "Intern") {
+        promptForIntern();
+      } else {
+        // buildPage()
+      }
       //    promptForEngineer
       // else if intern
       //    promptForIntern
@@ -67,20 +73,18 @@ const promptForNextEmployee = () => {
 const promptForEngineer = () => {
   inquirer
     .prompt([
-      
-        {
-          type: "input",
-          name: "name",
-          message: "What is the Engineer's name?",
-        }
-      ,
+      {
+        type: "input",
+        name: "name",
+        message: "What is the Engineer's name?",
+      },
       idQ,
       emailQ,
       {
         type: "input",
         name: "github",
         message: "Enter the Github username",
-      }
+      },
     ])
     .then((response) => {
       // add new engineer to employees array
@@ -102,11 +106,11 @@ const promptForIntern = () => {
         type: "input",
         name: "school",
         message: "What is the name of the school?",
-      }
+      },
     ])
     .then((response) => {
       // add new intern to employees array
-      promptForNextEmployee()
+      promptForNextEmployee();
     });
 };
 
