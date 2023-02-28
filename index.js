@@ -10,40 +10,38 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
 
-const nameQ = {
-  type: "input",
-  name: "name",
-  message: "What is your name?"
-}
-
 const idQ = {
   type: "input",
   name: "employeeId",
-  message: "Enter your Employee ID"
-}
+  message: "Enter the Employee ID",
+};
 
 const emailQ = {
   type: "input",
   name: "email",
-  message: "Enter your email address"
-}
+  message: "Enter the email address",
+};
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 inquirer
   .prompt([
     //manager questions
-    nameQ,
+    {
+      type: "input",
+      name: "name",
+      message: "What is the manager's name?",
+    },
     idQ,
     emailQ,
     {
       type: "input",
       name: "officeNumber",
-      messgae: "Enter your office number"
+      messgae: "Enter the office number",
     },
   ])
   .then((response) => {
     // populate manager info
-    // promptForNexEmployee ()
+    promptForNextEmployee();
   });
 
 const promptForNextEmployee = () => {
@@ -51,10 +49,10 @@ const promptForNextEmployee = () => {
     .prompt([
       {
         type: "list",
-        name: 'nextEmployee',
-        message: 'Which type of employee would you like to add next?',
-        choices: ['Engineer', 'Intern', 'No more employees to add']
-      },
+        name: "nextEmployee",
+        message: "Which type of employee would you like to add next?",
+        choices: ["Engineer", "Intern", "No more employees to add"],
+      }
     ])
     .then((response) => {
       // if engineer
@@ -69,13 +67,24 @@ const promptForNextEmployee = () => {
 const promptForEngineer = () => {
   inquirer
     .prompt([
+      
+        {
+          type: "input",
+          name: "name",
+          message: "What is the Engineer's name?",
+        }
+      ,
+      idQ,
+      emailQ,
       {
-        //engineer questions
-      },
+        type: "input",
+        name: "github",
+        message: "Enter the Github username",
+      }
     ])
     .then((response) => {
       // add new engineer to employees array
-      // promptForNextEmployee
+      promptForNextEmployee();
     });
 };
 
@@ -83,12 +92,21 @@ const promptForIntern = () => {
   inquirer
     .prompt([
       {
-        //intern questions
+        type: "input",
+        name: "name",
+        message: "What is the Intern's name?",
       },
+      idQ,
+      emailQ,
+      {
+        type: "input",
+        name: "school",
+        message: "What is the name of the school?",
+      }
     ])
     .then((response) => {
       // add new intern to employees array
-      // promptForNextEmployee
+      promptForNextEmployee()
     });
 };
 
