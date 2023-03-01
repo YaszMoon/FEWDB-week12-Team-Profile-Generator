@@ -11,7 +11,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./src/page-template.js");
 
 const idQ = {
-  type: "input",
+  type: "number",
   name: "employeeId",
   message: "Enter the Employee ID",
 };
@@ -22,10 +22,11 @@ const emailQ = {
   message: "Enter the email address",
 };
 
+const teamArray = [];
+
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 inquirer
   .prompt([
-    //manager questions
     {
       type: "input",
       name: "name",
@@ -34,13 +35,19 @@ inquirer
     idQ,
     emailQ,
     {
-      type: "input",
+      type: "number",
       name: "officeNumber",
-      messgae: "Enter the office number",
+      message: "Enter the office number",
     },
   ])
   .then((response) => {
-    // populate manager info
+    let newManager = new Manager(
+      response.name,
+      response.employeeId,
+      response.email,
+      response.officeNumber
+    );
+    teamArray.push(newManager);
     promptForNextEmployee();
   });
 
@@ -60,13 +67,8 @@ const promptForNextEmployee = () => {
       } else if (response.nextEmployee == "Intern") {
         promptForIntern();
       } else {
-        // buildPage()
+        buildPage();
       }
-      //    promptForEngineer
-      // else if intern
-      //    promptForIntern
-      // else
-      //    use the functionality from page-template to generate the team
     });
 };
 
@@ -87,7 +89,13 @@ const promptForEngineer = () => {
       },
     ])
     .then((response) => {
-      // add new engineer to employees array
+      let newEngineer = new Engineer(
+        response.name,
+        response.employeeId,
+        response.email,
+        response.github
+      );
+      teamArray.push(newEngineer);
       promptForNextEmployee();
     });
 };
@@ -109,11 +117,20 @@ const promptForIntern = () => {
       },
     ])
     .then((response) => {
-      // add new intern to employees array
+      let newIntern = new Intern(
+        response.name,
+        response.employeeId,
+        response.email,
+        response.school
+      );
+      teamArray.push(newIntern);
       promptForNextEmployee();
     });
 };
 
 const buildPage = () => {
-  // render(myArrayOfTeamMembers)
+  let data = render(teamArray);
+  fs.writeFile(outputPath, data, (err) =>
+    err ? console.error(err) : console.log("Team Profile Generated!")
+  );
 };
